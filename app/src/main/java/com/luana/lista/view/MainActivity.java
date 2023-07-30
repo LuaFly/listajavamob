@@ -46,23 +46,33 @@ public class MainActivity extends AppCompatActivity {
         controller.toString();
 
         pessoa = new Pessoa();
+        pessoa.setNome(preferences.getString("Nome", ""));
+        pessoa.setSobreNome(preferences.getString("Sobrenome", ""));
+        pessoa.setCurso(preferences.getString("Curso", ""));
+        pessoa.setTelefone(preferences.getString("Telefone", ""));
+
         //Atribuir valores ao objetvo
         //Conforme template
-        pessoa.setNome("Luana");
-        pessoa.setSobreNome("Ferreira");
-        pessoa.setCurso("Android");
-        pessoa.setTelefone("11-999995555");
-
-        outraPessoa = new Pessoa();
-        outraPessoa.setNome("Lucas");
-        outraPessoa.setSobreNome("Cruz");
-        outraPessoa.setCurso("B.I");
-        outraPessoa.setTelefone("16-999995544");
+//        pessoa.setNome("Luana");
+//        pessoa.setSobreNome("Ferreira");
+//        pessoa.setCurso("Android");
+//        pessoa.setTelefone("11-999995555");
+//
+//        outraPessoa = new Pessoa();
+//        outraPessoa.setNome("Lucas");
+//        outraPessoa.setSobreNome("Cruz");
+//        outraPessoa.setCurso("B.I");
+//        outraPessoa.setTelefone("16-999995544");
 
         editNome = findViewById(R.id.editNome);
         editSobrenome = findViewById(R.id.editSobrenome);
         editCurso = findViewById(R.id.editCurso);
         editTelefone = findViewById(R.id.editTelefone);
+
+        editNome.setText(pessoa.getNome());
+        editSobrenome.setText(pessoa.getSobreNome());
+        editCurso.setText(pessoa.getCurso());
+        editTelefone.setText(pessoa.getTelefone());
 
         btnLimpar = findViewById(R.id.btnLimpar);
         btnSalvar = findViewById(R.id.btnSalvar);
