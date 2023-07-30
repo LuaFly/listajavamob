@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Lista</string>
+    <string name="txt_titulo">Lista ViP</string>
+    <string name="dica_nome">Primeiro Nome</string>
+    <string name="dica_sobrenome">Sobrenome</string>
+    <string name="dica_curso">Nome do Curso</string>
+    <string name="dica_telefone">Telefone de Contato</string>
+    <string name="btn_limpar">Limpar</string>
+    <string name="btn_salvar">Salvar</string>
+    <string name="btn_finalizar">Finalizar</string>
+</resources>
