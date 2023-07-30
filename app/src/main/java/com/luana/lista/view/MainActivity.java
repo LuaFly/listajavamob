@@ -2,6 +2,7 @@ package com.luana.lista.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,10 +11,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.luana.lista.R;
+import com.luana.lista.controller.PessoaController;
 import com.luana.lista.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
 
+    SharedPreferences preferences;
+    public static final String NOME_PREFERENCES = "pref_listavip";
+    PessoaController controller;
     Pessoa pessoa;
     Pessoa outraPessoa;
 
@@ -33,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        preferences = getSharedPreferences(NOME_PREFERENCES, 0);
+        SharedPreferences.Editor listaVip = preferences.edit();
+
+        controller = new PessoaController();
+        controller.toString();
 
         pessoa = new Pessoa();
         //Atribuir valores ao objetvo
@@ -90,6 +101,14 @@ public class MainActivity extends AppCompatActivity {
 
                 Toast.makeText(MainActivity.this, "Salvo " +pessoa.toString(), Toast.LENGTH_LONG).show();
 
+                listaVip.putString("Nome ", pessoa.getNome());
+                listaVip.putString("Sobrenome ", pessoa.getSobreNome());
+                listaVip.putString("Curso ", pessoa.getCurso());
+                listaVip.putString("Telefone ", pessoa.getTelefone());
+                listaVip.apply();
+
+                controller.salvar(pessoa);
+
             }
         });
 
@@ -113,8 +132,8 @@ public class MainActivity extends AppCompatActivity {
         dadosOutraPessoa += outraPessoa.getTelefone();*/
 
 
-        Log.i("POOAndroid",pessoa.toString());
-        Log.i("POOAndroid",outraPessoa.toString());
+        //Log.i("POOAndroid",pessoa.toString());
+        //Log.i("POOAndroid",outraPessoa.toString());
 
     }
 }
