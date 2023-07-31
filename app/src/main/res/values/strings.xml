@@ -8,4 +8,5 @@
     <string name="btn_limpar">Limpar</string>
     <string name="btn_salvar">Salvar</string>
     <string name="btn_finalizar">Finalizar</string>
+    <string name="txtListaSpinner">Selecione o Curso</string>
 </resources>
