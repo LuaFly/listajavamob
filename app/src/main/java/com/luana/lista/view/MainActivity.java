@@ -16,9 +16,9 @@ import com.luana.lista.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
 
-    SharedPreferences preferences;
-    SharedPreferences.Editor listaVip;
-    public static final String NOME_PREFERENCES = "pref_listavip";
+//    SharedPreferences preferences;
+//    SharedPreferences.Editor listaVip;
+//    public static final String NOME_PREFERENCES = "pref_listavip";
     PessoaController controller;
     Pessoa pessoa;
     Pessoa outraPessoa;
@@ -40,17 +40,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        preferences = getSharedPreferences(NOME_PREFERENCES, 0);
-        listaVip = preferences.edit();
+//        preferences = getSharedPreferences(NOME_PREFERENCES, 0);
+//        listaVip = preferences.edit();
 
-        controller = new PessoaController();
+        controller = new PessoaController(MainActivity.this);
         controller.toString();
 
         pessoa = new Pessoa();
-        pessoa.setNome(preferences.getString("Nome", ""));
-        pessoa.setSobreNome(preferences.getString("Sobrenome", ""));
-        pessoa.setCurso(preferences.getString("Curso", ""));
-        pessoa.setTelefone(preferences.getString("Telefone", ""));
+        controller.buscar(pessoa);
+//        pessoa.setNome(preferences.getString("Nome", ""));
+//        pessoa.setSobreNome(preferences.getString("Sobrenome", ""));
+//        pessoa.setCurso(preferences.getString("Curso", ""));
+//        pessoa.setTelefone(preferences.getString("Telefone", ""));
 
         //Atribuir valores ao objetvo
         //Conforme template
@@ -92,8 +93,9 @@ public class MainActivity extends AppCompatActivity {
                 editCurso.setText("");
                 editTelefone.setText("");
 
-                listaVip.clear();
-                listaVip.apply();
+                controller.limpar();
+
+
 
             }
         });
@@ -116,11 +118,11 @@ public class MainActivity extends AppCompatActivity {
 
                 Toast.makeText(MainActivity.this, "Salvo " +pessoa.toString(), Toast.LENGTH_LONG).show();
 
-                listaVip.putString("Nome ", pessoa.getNome());
-                listaVip.putString("Sobrenome ", pessoa.getSobreNome());
-                listaVip.putString("Curso ", pessoa.getCurso());
-                listaVip.putString("Telefone ", pessoa.getTelefone());
-                listaVip.apply();
+//                listaVip.putString("Nome ", pessoa.getNome());
+//                listaVip.putString("Sobrenome ", pessoa.getSobreNome());
+//                listaVip.putString("Curso ", pessoa.getCurso());
+//                listaVip.putString("Telefone ", pessoa.getTelefone());
+//                listaVip.apply();
 
                 controller.salvar(pessoa);
 
